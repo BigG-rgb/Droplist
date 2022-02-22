@@ -1,0 +1,119 @@
+/*
+The droplist is a list of 2x4 grids (2d arrays). Each entry in the list corresponds to the npc type at that index
+Each npc type can drop exactly 4 items. The first row in the grid it the itemID. The second row in the grid is the item drop chance (lower = more frequent).
+*/
+
+
+global.dropList=ds_list_create();
+/* Pig Drops*/
+ds_list_add(global.dropList,ds_grid_create(2,16)); 
+ds_grid_set(ds_list_find_value(global.dropList,0),0,0,13); //Elf Hat
+ds_grid_set(ds_list_find_value(global.dropList,0),0,1,15); //Shady Hat
+ds_grid_set(ds_list_find_value(global.dropList,0),0,2,8); //Green Tele
+ds_grid_set(ds_list_find_value(global.dropList,0),0,3,9); //Red Tele
+ds_grid_set(ds_list_find_value(global.dropList,0),0,4,10); //Yellow Tele
+ds_grid_set(ds_list_find_value(global.dropList,0),0,5,11); // Purple Tele
+ds_grid_set(ds_list_find_value(global.dropList,0),0,6,5); // Short Sword
+ds_grid_set(ds_list_find_value(global.dropList,0),0,7,4); //Dagger
+ds_grid_set(ds_list_find_value(global.dropList,0),1,0,10);
+ds_grid_set(ds_list_find_value(global.dropList,0),1,1,10);
+ds_grid_set(ds_list_find_value(global.dropList,0),1,2,10);
+ds_grid_set(ds_list_find_value(global.dropList,0),1,3,10);
+ds_grid_set(ds_list_find_value(global.dropList,0),1,4,10);
+ds_grid_set(ds_list_find_value(global.dropList,0),1,5,10);
+ds_grid_set(ds_list_find_value(global.dropList,0),1,6,10);
+ds_grid_set(ds_list_find_value(global.dropList,0),1,7,10);
+/*ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,1),0,0,2);
+ds_grid_set(ds_list_find_value(global.dropList,1),0,1,6);
+ds_grid_set(ds_list_find_value(global.dropList,1),0,2,65);
+ds_grid_set(ds_list_find_value(global.dropList,1),0,3,11);
+ds_grid_set(ds_list_find_value(global.dropList,1),1,0,600);
+ds_grid_set(ds_list_find_value(global.dropList,1),1,1,550);
+ds_grid_set(ds_list_find_value(global.dropList,1),1,2,1850);
+ds_grid_set(ds_list_find_value(global.dropList,1),1,3,300);
+ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,2),0,0,36);
+ds_grid_set(ds_list_find_value(global.dropList,2),0,1,10);
+ds_grid_set(ds_list_find_value(global.dropList,2),0,2,3);
+ds_grid_set(ds_list_find_value(global.dropList,2),0,3,6);
+ds_grid_set(ds_list_find_value(global.dropList,2),1,0,5);
+ds_grid_set(ds_list_find_value(global.dropList,2),1,1,50);
+ds_grid_set(ds_list_find_value(global.dropList,2),1,2,110);
+ds_grid_set(ds_list_find_value(global.dropList,2),1,3,70);
+ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,3),0,0,4);
+ds_grid_set(ds_list_find_value(global.dropList,3),0,1,12);
+ds_grid_set(ds_list_find_value(global.dropList,3),0,2,11);
+ds_grid_set(ds_list_find_value(global.dropList,3),0,3,3);
+ds_grid_set(ds_list_find_value(global.dropList,3),1,0,250);
+ds_grid_set(ds_list_find_value(global.dropList,3),1,1,300);
+ds_grid_set(ds_list_find_value(global.dropList,3),1,2,400);
+ds_grid_set(ds_list_find_value(global.dropList,3),1,3,450);
+ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,4),0,0,16);
+ds_grid_set(ds_list_find_value(global.dropList,4),0,1,13);
+ds_grid_set(ds_list_find_value(global.dropList,4),0,2,14);
+ds_grid_set(ds_list_find_value(global.dropList,4),0,3,15);
+ds_grid_set(ds_list_find_value(global.dropList,4),1,0,20);
+ds_grid_set(ds_list_find_value(global.dropList,4),1,1,50);
+ds_grid_set(ds_list_find_value(global.dropList,4),1,2,50);
+ds_grid_set(ds_list_find_value(global.dropList,4),1,3,50);
+ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,5),0,0,27);
+ds_grid_set(ds_list_find_value(global.dropList,5),0,1,1);
+ds_grid_set(ds_list_find_value(global.dropList,5),0,2,3);
+ds_grid_set(ds_list_find_value(global.dropList,5),0,3,12);
+ds_grid_set(ds_list_find_value(global.dropList,5),1,0,50);
+ds_grid_set(ds_list_find_value(global.dropList,5),1,1,50);
+ds_grid_set(ds_list_find_value(global.dropList,5),1,2,50);
+ds_grid_set(ds_list_find_value(global.dropList,5),1,3,70);
+ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,6),0,0,68);
+ds_grid_set(ds_list_find_value(global.dropList,6),0,1,49);
+ds_grid_set(ds_list_find_value(global.dropList,6),0,2,34);
+ds_grid_set(ds_list_find_value(global.dropList,6),0,3,51);
+ds_grid_set(ds_list_find_value(global.dropList,6),1,0,600);
+ds_grid_set(ds_list_find_value(global.dropList,6),1,1,1000);
+ds_grid_set(ds_list_find_value(global.dropList,6),1,2,1250);
+ds_grid_set(ds_list_find_value(global.dropList,6),1,3,1340);
+ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,7),0,0,64);
+ds_grid_set(ds_list_find_value(global.dropList,7),0,1,38);
+ds_grid_set(ds_list_find_value(global.dropList,7),0,2,37);
+ds_grid_set(ds_list_find_value(global.dropList,7),0,3,63);
+ds_grid_set(ds_list_find_value(global.dropList,7),1,0,240);
+ds_grid_set(ds_list_find_value(global.dropList,7),1,1,500);
+ds_grid_set(ds_list_find_value(global.dropList,7),1,2,485);
+ds_grid_set(ds_list_find_value(global.dropList,7),1,3,1200);
+ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,8),0,0,35);
+ds_grid_set(ds_list_find_value(global.dropList,8),0,1,29);
+ds_grid_set(ds_list_find_value(global.dropList,8),0,2,23);
+ds_grid_set(ds_list_find_value(global.dropList,8),0,3,0);
+ds_grid_set(ds_list_find_value(global.dropList,8),1,0,175);
+ds_grid_set(ds_list_find_value(global.dropList,8),1,1,235);
+ds_grid_set(ds_list_find_value(global.dropList,8),1,2,610);
+ds_grid_set(ds_list_find_value(global.dropList,8),1,3,0);*/
+global.breakDropList=sum_gridList(global.dropList);
+ds_list_add(global.dropList,ds_grid_create(2,16));
+ds_grid_set(ds_list_find_value(global.dropList,9),0,0,28);
+ds_grid_set(ds_list_find_value(global.dropList,9),0,1,10);
+ds_grid_set(ds_list_find_value(global.dropList,9),0,2,12);
+ds_grid_set(ds_list_find_value(global.dropList,9),0,3,22);
+ds_grid_set(ds_list_find_value(global.dropList,9),1,0,525);
+ds_grid_set(ds_list_find_value(global.dropList,9),1,1,445);
+ds_grid_set(ds_list_find_value(global.dropList,9),1,2,135);
+ds_grid_set(ds_list_find_value(global.dropList,9),1,3,305);
+global.breakDropList=sum_gridList(global.dropList);
+global.expList=ds_list_create();
+ ds_list_add(global.expList,96); //Pig
+ ds_list_add(global.expList,224); //Big Pig
+ ds_list_add(global.expList,1080); //Mummy
+ ds_list_add(global.expList,228); //Octo
+ ds_list_add(global.expList,420); // Gift Box
+ ds_list_add(global.expList,155); // Bunny
+ ds_list_add(global.expList,1080); //Easter Egg
+ ds_list_add(global.expList,319); //Bonehead
+ ds_list_add(global.expList,562); //Sand Fiend
+global.breakExpList=sum_list(global.expList);
